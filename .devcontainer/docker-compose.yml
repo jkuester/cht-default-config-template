@@ -1,0 +1,59 @@
+version: '3.9'
+
+services:
+  cht-conf:
+    image: ghcr.io/jkuester/cht-conf:latest
+    # Bypass existing entrypoint so container does not immediately stop
+    entrypoint: sleep infinity
+    volumes:
+      - ..:/workdir
+    networks:
+      - cht-net
+  cht-upgrade-service:
+    restart: always
+    image: public.ecr.aws/s5s3h4s7/cht-upgrade-service:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+#      - ${DOCKER_CONFIG_PATH}:/config
+#      - ${CHT_COMPOSE_PATH}:/docker-compose
+      - .:/config
+      - .:/docker-compose
+    networks:
+      - cht-net
+    environment:
+      - COUCHDB_USER
+      - COUCHDB_PASSWORD
+      - COUCHDB_SECRET
+      - COUCHDB_UUID
+      - COUCHDB_DATA
+      - COUCHDB_SERVERS
+      - CLUSTER_PEER_IPS
+      - SVC_NAME
+      - SVC1_NAME
+      - SVC2_NAME
+      - SVC3_NAME
+      - COUCHDB_LOG_LEVEL
+      - MARKET_URL_READ
+      - BUILDS_SERVER
+      - NGINX_HTTP_PORT
+      - NGINX_HTTPS_PORT
+      - CERTIFICATE_MODE
+      - SSL_VOLUME_MOUNT_PATH
+      - SSL_CERT_FILE_PATH
+      - SSL_KEY_FILE_PATH
+      - COMMON_NAME
+      - EMAIL
+      - COUNTRY
+      - STATE
+      - LOCALITY
+      - ORGANISATION
+      - DEPARTMENT
+      - DOCKER_CONFIG=/config
+      - CHT_COMPOSE_PROJECT_NAME=${CHT_COMPOSE_PROJECT_NAME:-cht}
+      - CHT_NETWORK=${CHT_NETWORK:-cht-net}
+      - DOCKER_CONFIG_PATH
+      - CHT_COMPOSE_PATH
+
+networks:
+  cht-net:
+    name: ${CHT_NETWORK:-cht-net}

@@ -1,0 +1,12 @@
+{
+  "name": "cht-conf",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "cht-conf",
+  "workspaceFolder": "/workdir",
+  "capAdd": ["SYS_ADMIN"],
+  "runServices": ["cht-upgrade-service"],
+  "forwardPorts": [
+    "nginx:443",
+    "nginx:80"
+  ]
+}
