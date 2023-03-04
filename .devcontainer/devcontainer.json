@@ -1,12 +1,13 @@
 {
   "name": "cht-conf",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "cht-conf",
-  "workspaceFolder": "/workdir",
+  "image": "cht-conf",
   "capAdd": ["SYS_ADMIN"],
-  "runServices": ["cht-upgrade-service"],
-  "forwardPorts": [
-    "nginx:443",
-    "nginx:80"
-  ]
+  "forwardPorts": [443, 80],
+  "privileged": true,
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "workspaceFolder": "${localWorkspaceFolder}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+  "postStartCommand": "cd .devcontainer/cht && bash start-cht.sh"
 }

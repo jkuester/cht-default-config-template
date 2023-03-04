@@ -8,3 +8,6 @@ forms/contact/*.xlsx
 !forms/contact/PLACE_TYPE-edit.xlsx
 !forms/contact/person-create.xlsx
 !forms/contact/person-edit.xlsx
+.devcontainer/cht
+!.devcontainer/cht/.env
+!.devcontainer/cht/start-cht.sh
