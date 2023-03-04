@@ -1,9 +1,8 @@
 {
   "name": "cht-conf",
-  "image": "cht-conf",
+  "image": "ghcr.io/jkuester/cht-conf:latest",
   "capAdd": ["SYS_ADMIN"],
   "forwardPorts": [443, 80],
-  "privileged": true,
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
