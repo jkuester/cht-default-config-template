@@ -2,9 +2,17 @@
   "name": "cht-conf",
   "image": "ghcr.io/jkuester/cht-conf:latest",
   "capAdd": ["SYS_ADMIN"],
-  "forwardPorts": [443, 80],
+  "forwardPorts": [443],
+  "portsAttributes": {
+    "443": {
+      "label": "CHT App"
+    }
+  },
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "containerEnv": {
+    "COUCH_URL": "https://medic:password@localhost:443/medic"
   },
   "workspaceFolder": "${localWorkspaceFolder}",
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
