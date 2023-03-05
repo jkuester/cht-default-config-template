@@ -11,9 +11,6 @@
   "features": {
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
   },
-  "containerEnv": {
-    "COUCH_URL": "https://medic:password@localhost:443/medic"
-  },
   "workspaceFolder": "${localWorkspaceFolder}",
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
   "postStartCommand": "cd .devcontainer/cht && bash start-cht.sh"
