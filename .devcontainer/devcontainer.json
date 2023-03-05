@@ -13,5 +13,12 @@
   },
   "workspaceFolder": "${localWorkspaceFolder}",
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
-  "postStartCommand": "cd .devcontainer/cht && bash start-cht.sh"
+  "postStartCommand": "cd .devcontainer/cht && bash start-cht.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GrapeCity.gc-excelviewer"
+      ]
+    }
+  }
 }
