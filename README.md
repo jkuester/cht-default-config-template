@@ -14,7 +14,11 @@ This Codespace will be running a full development environment with everything ne
 
 #### Accessing the CHT test instance
 
-A CHT test instance will be automatically deployed when you start the Codespace. The first time the Codespace is started it will take some time to initialize the CHT instance, but once it is running, you can access it via the forwarded port `CHT App (443)`.  To get the forwarding address: 
+A CHT test instance will be automatically deployed when you start the Codespace. The first time the Codespace is started it will take some time to initialize the CHT instance.
+
+(You can monitor the startup progress by running `docker logs -f cht-cht-upgrade-service-1` in the terminal.)
+
+Once it is running, you can access it via the forwarded port `CHT App (443)`.  To get the forwarding address: 
 
 - Open the "Ports" tab in the Codespace pane by entering _Ctrl+Shift+P_ or _Cmd+Shift+P_ and selecting `Ports: Focus on Ports View`.
 - Right-click on the `CHT App (443)` row and select "Copy Local Address".
@@ -31,4 +35,8 @@ The Codespace comes preloaded with Node and NPM. To build your configuration, op
 
 #### Deploying config updates to the CHT test instance
 
-After making updates to your config, you can deploy these changes to your test instance using the preloaded `cht-conf` utility.  To deploy your config, open the terminal in the Codespace pane (_Ctrl+Shift+\`_ or _Cmd+Shift+\`_) and run `cht --url=https://medic:password@<your_forwarding_address>`. _(Use the same address when deploying config updates as you did above when accessing the CHT test instance. Just make sure to include the username:password in the URL as shown.)_
+After making updates to your config, you can deploy these changes to your test instance using the preloaded `cht-conf` utility.  To deploy your config, open the terminal in the Codespace pane (_Ctrl+Shift+\`_ or _Cmd+Shift+\`_) and run: 
+
+```shell
+cht --accept-self-signed-certs --url=https://medic:password@localhost
+```
